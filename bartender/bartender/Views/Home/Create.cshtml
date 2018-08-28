@@ -1,0 +1,22 @@
+﻿@using bartender.Models
+@model bartender.Models.Drink
+
+
+<h1>Create</h1>
+
+<form method="post">
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Alchohol"></label>
+        <select asp-for="Alchohol" asp-items="@Html.GetEnumSelectList<AlchoholLevel>()"></select>
+        <span asp-validation-for="Alchohol"></span>
+    </div>
+
+    <input type="submit" name="save" value="Save" />
+</form>
