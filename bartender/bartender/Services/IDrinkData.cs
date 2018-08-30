@@ -11,7 +11,5 @@ namespace bartender.Services
         IEnumerable<Drink> GetAll();
         Drink Get(int id);
         Drink Add(Drink drink);
-        void Save(Drink drink);
-        Drink Delete(int Id);
     }
 }

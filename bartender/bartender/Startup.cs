@@ -28,9 +28,6 @@ namespace bartender
         {
             services.AddDbContext<BartenderDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("Bartender")));
             services.AddScoped<IDrinkData, SqlDrinkData>();
-
-            services.AddScoped<IDrinkData, SqlDrinkData>();
-            services.AddScoped<IOrderData, SqlOrderData>();
             services.AddMvc();
         }
 

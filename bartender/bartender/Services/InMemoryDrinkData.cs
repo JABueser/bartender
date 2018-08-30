@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace bartender.Services
 {
-    public class InMemoryDrinkData /*: IDrinkData*/
+    public class InMemoryDrinkData : IDrinkData
     {
         public InMemoryDrinkData()
         {
