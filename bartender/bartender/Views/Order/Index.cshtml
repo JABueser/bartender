@@ -1,0 +1,27 @@
+﻿@model bartender.ViewModels.OrderListViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<table>
+    @foreach (var order in Model.Orders)
+    {
+    <tr>
+        <td>DrinkID: @order.DrinkName</td>
+        <td>OrderID: @order.OrderId</td>
+        <td>Time: @order.TimeOrdered</td>
+        <td>isDone? : @order.isDone</td>
+        <td>
+            <form asp-action="Finish" asp-controller="Order" method="post">
+                <input asp-for="orderId" value="@order.OrderId" />
+                <input type="submit" name="save" value="Save" />
+            </form>
+        </td>
+    </tr>
+    }
+</table>
+
+<body>
+</body>
+</html>

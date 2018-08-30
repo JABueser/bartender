@@ -32,5 +32,38 @@ namespace bartender.Services
         {
             return _context.Drinks.OrderBy(d => d.Name);
         }
+
+        public void Save(Drink drink)
+        {
+            if (drink.Id == 0)
+            {
+                _context.Drinks.Add(drink);
+            }
+            else
+            {
+                Drink dbEntry = _context.Drinks.FirstOrDefault(d => d.Id == drink.Id);
+                if (dbEntry != null)
+                {
+                    dbEntry.Description = drink.Description;
+                    dbEntry.Name = drink.Name;
+                    dbEntry.Image = drink.Image;
+                    dbEntry.Price = drink.Price;
+                }
+            }
+            _context.SaveChanges();
+        }
+
+        public Drink Delete(int Id)
+        {
+            Drink dbEntry = _context.Drinks.FirstOrDefault(d => d.Id == Id);
+            if (dbEntry != null)
+            {
+                _context.Drinks.Remove(dbEntry);
+                _context.SaveChanges();
+            }
+            return dbEntry;
+        }
+
+
     }
 }
