@@ -31,12 +31,12 @@ namespace bartender.Controllers
         
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public IActionResult Create(DrinkIndexViewModel model)
+        public IActionResult Create(Drink model)
         {
             var newOrder = new Order();
             newOrder.isDone = false;
             newOrder.DrinkName = model.Name;
-            newOrder.DrinkId = model.DrinkId;
+            newOrder.DrinkId = model.Id;
             newOrder.TimeOrdered = DateTime.Now;
 
             newOrder = _orderData.Add(newOrder);
@@ -47,9 +47,9 @@ namespace bartender.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public IActionResult Finish(int Id)
+        public IActionResult Finish(OrderListViewModel model)
         {
-            var order = _orderData.Get(Id);
+            var order = _orderData.Get(model.orderId);
             if (ModelState.IsValid)
             {
                 order.isDone = true;

@@ -1,0 +1,13 @@
+﻿@model Order
+
+
+<section>
+    <h3>@Model.DrinkName</h3>
+    <div>Time: @Model.TimeOrdered</div>
+    <div>
+        <form asp-action="Finish" asp-controller="Order" method="post">
+            <input type="hidden" asp-for="OrderId" value="@Model.OrderId" />
+            <input class="btn btn-primary" type="submit" name="save" value="Finish" />
+        </form>
+    </div>
+</section>

@@ -4,24 +4,10 @@
 <head>
     <title></title>
 </head>
-<table>
+<body>
     @foreach (var order in Model.Orders)
     {
-    <tr>
-        <td>DrinkID: @order.DrinkName</td>
-        <td>OrderID: @order.OrderId</td>
-        <td>Time: @order.TimeOrdered</td>
-        <td>isDone? : @order.isDone</td>
-        <td>
-            <form asp-action="Finish" asp-controller="Order" method="post">
-                <input asp-for="orderId" value="@order.OrderId" />
-                <input type="submit" name="save" value="Save" />
-            </form>
-        </td>
-    </tr>
+        @Html.Partial("_Summary", order)
     }
-</table>
-
-<body>
 </body>
 </html>

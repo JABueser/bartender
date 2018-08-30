@@ -44,13 +44,10 @@ namespace bartender
 
             app.UseStaticFiles();
 
+            app.UseNodeModules(env.ContentRootPath);
+
             app.UseMvc(ConfigureRoutes);
 
-            app.Run(async (context) =>
-            {
-                context.Response.ContentType = "text/plain";
-                await context.Response.WriteAsync($"Hello : {env.EnvironmentName}");
-            });
         }
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
